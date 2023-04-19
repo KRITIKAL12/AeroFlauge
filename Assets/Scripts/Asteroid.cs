@@ -71,6 +71,10 @@ public class Asteroid : MonoBehaviour
         }
     }
 
+
+
+
+    //lol
     private void SpawnSmallAsteroids()
     {
 
