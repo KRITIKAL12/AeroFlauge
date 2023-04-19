@@ -17,8 +17,8 @@ TagManager:
   - Ignore Collisions
   - Water
   - UI
-  - 
-  - 
+  - Asteroid
+  - Player
   - 
   - 
   - 
@@ -46,4 +46,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: 
+    uniqueID: 2030479607
     locked: 0

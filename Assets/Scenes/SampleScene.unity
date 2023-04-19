@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 824201996}
   - component: {fileID: 824201997}
   - component: {fileID: 824201998}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
