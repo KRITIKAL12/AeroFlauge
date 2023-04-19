@@ -6,8 +6,10 @@ public class GameManager : MonoBehaviour
 {
     public Shooting player;
     public int lives = 3;
-    public float spawnDelay = 3.0f;
+    public float spawnDelay = 5.0f;
+    public float layerChangeDelay = 60.0f;
 
+     
     public ParticleSystem explosion;
 
     public void AsteroidDestroyed(Asteroid asteroid)
@@ -36,11 +38,18 @@ public class GameManager : MonoBehaviour
     private void Respawn()
     {
         this.player.transform.position = Vector3.zero;
+        this.player.gameObject.layer = LayerMask.NameToLayer("Ignore Collisions");
         this.player.gameObject.SetActive(true);
+        Invoke(nameof(ChangePlayerLayer), layerChangeDelay);
+    }
+     
+    private void ChangePlayerLayer()
+    {
+        this.player.gameObject.layer = LayerMask.NameToLayer("Player");
     }
 
-    private void GameOver()
-    {
+    private void GameOver()   
+    { 
         //Game Over...
     }
 

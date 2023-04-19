@@ -74,7 +74,7 @@ public class Asteroid : MonoBehaviour
 
 
 
-    //lol
+    //lol respawn delay test
     private void SpawnSmallAsteroids()
     {
 
