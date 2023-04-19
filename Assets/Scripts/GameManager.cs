@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public Shooting player;
     public int lives = 3;
-    public float spawnDelay = 5.0f;
+    public float spawnDelay = 3.0f;
     public float layerChangeDelay = 60.0f;
 
      

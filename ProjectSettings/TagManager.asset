@@ -14,12 +14,12 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ignore Collisions
+  - 
   - Water
   - UI
   - Asteroid
   - Player
-  - 
+  - Ignore Collisions
   - 
   - 
   - 
