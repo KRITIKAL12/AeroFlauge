@@ -1,21 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public Shooting player;
+    public TextMeshProUGUI scoreIndicator;
+    public TextMeshProUGUI livesIndicator;
     public int lives = 3;
+    public int score = 0;
     public float spawnDelay = 3.0f;
     public float layerChangeDelay = 60.0f;
 
      
     public ParticleSystem explosion;
 
+    private void Update()
+    {
+        livesIndicator.text = lives.ToString();
+        scoreIndicator.text = score.ToString();
+    }
+
     public void AsteroidDestroyed(Asteroid asteroid)
     {
         this.explosion.transform.position = asteroid.transform.position;
         this.explosion.Play();
+
+        if (asteroid.size < 0.88f)
+        {
+            score += 100;
+        }
+        else if (asteroid.size < 1.21)
+        {
+            score += 55;
+        }
+        else
+        {
+            score += 15;
+        }
+        
+
+
     }
    
     public void PlayerDied()
@@ -54,3 +80,4 @@ public class GameManager : MonoBehaviour
     }
 
 }
+   
