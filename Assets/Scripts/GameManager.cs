@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -8,8 +9,11 @@ public class GameManager : MonoBehaviour
     public Shooting player;
     public TextMeshProUGUI scoreIndicator;
     public TextMeshProUGUI livesIndicator;
+    public Transform gameOverPanel;
     public int lives = 3;
     public int score = 0;
+    public bool gameOver = false;
+
     public float spawnDelay = 3.0f;
     public float layerChangeDelay = 60.0f;
 
@@ -20,6 +24,14 @@ public class GameManager : MonoBehaviour
     {
         livesIndicator.text = lives.ToString();
         scoreIndicator.text = score.ToString();
+
+        if (gameOver)
+        {
+            if (Input.GetKey(KeyCode.Return))
+            {
+                SceneManager.LoadScene("Asteroids");
+            }
+        }
     }
 
     public void AsteroidDestroyed(Asteroid asteroid)
@@ -75,8 +87,12 @@ public class GameManager : MonoBehaviour
     }
 
     private void GameOver()   
-    { 
+    {
         //Game Over...
+        gameOverPanel.gameObject.SetActive(true);
+        gameOver = true;
+
+
     }
 
 }
