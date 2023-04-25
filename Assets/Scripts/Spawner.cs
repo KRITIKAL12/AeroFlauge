@@ -7,6 +7,10 @@ public class Spawner : MonoBehaviour
     public float spawnDistance = 25.0f;
     public float trajectoryVariance = 25.0f;
 
+    public float smoothTime = 0.25f;
+    public GameObject target;
+    private Vector3 velocity = Vector3.zero;
+
     public Asteroid asteroidPrefab;
 
     // Start is called before the first frame update
@@ -19,6 +23,7 @@ public class Spawner : MonoBehaviour
 
     private void Spawn()
     {
+        
 
         for (int i = 0; i < this.spawnAmount; i++)
         {
@@ -37,5 +42,11 @@ public class Spawner : MonoBehaviour
         } 
 
 
+    }
+
+    private void Update()
+    {
+        Vector3 targetPosition = new Vector3(target.transform.position.x, target.transform.position.y,0);
+        this.transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
     }
 }
