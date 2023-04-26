@@ -8,6 +8,7 @@ public class backgroundLoop : MonoBehaviour
     private Camera mainCamera;
     private Vector2 screenBounds;
     public float choke;
+    public GameObject BGVert;
 
     private void Start()
     {
@@ -22,15 +23,20 @@ public class backgroundLoop : MonoBehaviour
     {
         float objectWidth = obj.GetComponent<SpriteRenderer>().bounds.size.x - choke;
         int childsNeeded = (int)Mathf.Ceil(screenBounds.x * 2 / objectWidth);
-        GameObject clone = Instantiate(obj) as GameObject;
+        
+        GameObject cloneX = Instantiate(obj) as GameObject;
+        
         for (int i = 0; i <= childsNeeded; i++)
         {
-            GameObject c = Instantiate(clone) as GameObject;
+            GameObject c = Instantiate(cloneX) as GameObject;
             c.transform.SetParent(obj.transform);
             c.transform.position = new Vector3(objectWidth * i, obj.transform.position.y, obj.transform.position.z);
-            c.name = obj.name + i;
+            c.name = obj.name + i + "X";
+            c.transform.tag = "X";
         }
-        Destroy(clone);
+        
+        Destroy(cloneX);
+        
         Destroy(obj.GetComponent<SpriteRenderer>());
     }
 
@@ -39,9 +45,17 @@ public class backgroundLoop : MonoBehaviour
         Transform[] children =  obj.GetComponentsInChildren<Transform>();
         if(children.Length > 1)
         {
-            GameObject firstChild = children[1].gameObject;
-            GameObject lastChild = children[children.Length - 1].gameObject;
+            GameObject firstChild = null;
+            GameObject lastChild = null;
+            
+            
+            firstChild = children[1].gameObject;
+            lastChild = children[children.Length - 1].gameObject;
+            
+            
+                
             float halfObjectWidth = lastChild.GetComponent<SpriteRenderer>().bounds.extents.x - choke;
+            
             if (transform.position.x + screenBounds.x > lastChild.transform.position.x + halfObjectWidth)
             {
                 firstChild.transform.SetAsLastSibling();
@@ -52,11 +66,20 @@ public class backgroundLoop : MonoBehaviour
                 lastChild.transform.SetAsFirstSibling();
                 lastChild.transform.position = new Vector3(firstChild.transform.position.x - halfObjectWidth * 2, firstChild.transform.position.y, firstChild.transform.position.z);
             }
+
+            
         }
     }
     void LateUpdate()
     {
-        foreach(GameObject obj in levels)
+        GameObject[] vertChildren = null;
+
+        for(int i=0;i< BGVert.transform.childCount;i++)
+        {
+            vertChildren[i] = BGVert.transform.GetChild(i).gameObject;
+        }
+
+        foreach(GameObject obj in vertChildren)
         {
             repositionChildObjects(obj);
         }
