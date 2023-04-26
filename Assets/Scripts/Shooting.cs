@@ -11,6 +11,7 @@ public class Shooting : MonoBehaviour
     public int colorChange;
     public GameObject gameManager;
     private GameManager gameManagerScript;
+    
 
     private void Awake()
     {
@@ -23,6 +24,7 @@ public class Shooting : MonoBehaviour
         if(Input.GetButtonDown("Fire1"))
         {
             Shoot();
+
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -31,6 +33,7 @@ public class Shooting : MonoBehaviour
             else if (colorChange == 1)
                 colorChange = 0;
         }
+        
     }
 
 
@@ -47,7 +50,9 @@ public class Shooting : MonoBehaviour
         {
             this.gameObject.SetActive(false);
             gameManagerScript.PlayerDied();
+           
         }
+        
     }
 }
 

@@ -16,12 +16,14 @@ public class GameManager : MonoBehaviour
 
     public float spawnDelay = 3.0f;
     public float layerChangeDelay = 60.0f;
+    public CameraShake cameraShake;
 
-     
+
     public ParticleSystem explosion;
 
     private void Update()
     {
+        
         livesIndicator.text = lives.ToString();
         scoreIndicator.text = score.ToString();
 
@@ -29,7 +31,9 @@ public class GameManager : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Return))
             {
+                
                 SceneManager.LoadScene("Asteroids");
+                
             }
         }
     }
@@ -60,6 +64,7 @@ public class GameManager : MonoBehaviour
     {
         this.explosion.transform.position = this.player.transform.position;
         this.explosion.Play();
+        StartCoroutine(cameraShake.Shake(.15f, .4f));
 
         lives -= 1;
         if(this.lives <= 0)
@@ -75,7 +80,7 @@ public class GameManager : MonoBehaviour
 
     private void Respawn()
     {
-        this.player.transform.position = Vector3.zero;
+        //this.player.transform.position = Vector3.zero;
         this.player.gameObject.layer = LayerMask.NameToLayer("Ignore Collisions");
         this.player.gameObject.SetActive(true);
         Invoke(nameof(ChangePlayerLayer), layerChangeDelay);

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3398074285325805733}
   - component: {fileID: 5782722410718465260}
   - component: {fileID: 1855681831780227478}
-  - component: {fileID: 447536249572977002}
   m_Layer: 0
   m_Name: bullet
   m_TagString: Red Bullet
@@ -134,16 +133,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
---- !u!114 &447536249572977002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9209381207037842037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84d53162982d6cf4eb45001f7f96b543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitEffect: {fileID: 0}
