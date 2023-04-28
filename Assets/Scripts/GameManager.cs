@@ -81,8 +81,9 @@ public class GameManager : MonoBehaviour
     private void Respawn()
     {
         //this.player.transform.position = Vector3.zero;
-        this.player.gameObject.layer = LayerMask.NameToLayer("Ignore Collisions");
         this.player.gameObject.SetActive(true);
+        this.player.gameObject.layer = LayerMask.NameToLayer("Ignore Collisions");
+        
         Invoke(nameof(ChangePlayerLayer), layerChangeDelay);
     }
      

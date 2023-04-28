@@ -11,7 +11,9 @@ public class Shooting : MonoBehaviour
     public int colorChange;
     public GameObject gameManager;
     private GameManager gameManagerScript;
-    
+
+    private float maxLifeTime = 3.0f;
+
 
     private void Awake()
     {
@@ -24,7 +26,7 @@ public class Shooting : MonoBehaviour
         if(Input.GetButtonDown("Fire1"))
         {
             Shoot();
-
+           
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -42,12 +44,14 @@ public class Shooting : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab[colorChange], firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+        Destroy(bullet, this.maxLifeTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Asteroid")
         {
+
             this.gameObject.SetActive(false);
             gameManagerScript.PlayerDied();
            
@@ -56,3 +60,4 @@ public class Shooting : MonoBehaviour
     }
 }
 
+//if (collision.gameObject.tag == "Asteroid" || collision.gameObject.tag == "Red Bullet" || collision.gameObject.tag == "Blue Bullet")

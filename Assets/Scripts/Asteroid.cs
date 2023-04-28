@@ -1,4 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+
 
 public class Asteroid : MonoBehaviour
 {
@@ -10,12 +13,15 @@ public class Asteroid : MonoBehaviour
     public GameObject gameManager;
     private GameManager gameManagerScript;
 
-    public float size = 1.0f;
-    public float speed = 50f;
+    public float size;
+    public float speed;
+    public float smallAsteroidSpeed;
     public float minSize = 0.5f;
     public float maxSize = 1.5f;
-    private float maxLifeTime = 10.0f;
+    private float maxLifeTime = 20.0f;
     public int random;
+
+
 
     private void Awake()
     {
@@ -42,33 +48,49 @@ public class Asteroid : MonoBehaviour
 
     public void SetTrajectory(Vector2 direction)
     {
-        _rigidbody.AddForce(direction * this.speed);
+       if(this.size >= 1.2f && this.size< this.maxSize)
+        {
+            Debug.Log("Big Speed");
+            _rigidbody.AddForce(direction * this.speed);
+        }
+        else
+        {
+            Debug.Log("Small Speed");
+            _rigidbody.AddForce(direction * this.smallAsteroidSpeed);
+        }
+        
         Destroy(this.gameObject, this.maxLifeTime);
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Red Bullet" && random == 1)
+        if (collision.gameObject.tag != "Player")
         {
-            if((this.size * 0.5) >= this.minSize)
+            Destroy(collision.gameObject);
+            if (collision.gameObject.tag == "Red Bullet" && random == 1)
             {
-                SpawnSmallAsteroids();
+                if ((this.size * 0.5) >= this.minSize)
+                {
+                    SpawnSmallAsteroids();
+                }
+
+                gameManagerScript.AsteroidDestroyed(this);
+
+                Destroy(this.gameObject);
             }
-
-            gameManagerScript.AsteroidDestroyed(this);
-
-            Destroy(this.gameObject);
-        }
-        if (collision.gameObject.tag == "Blue Bullet" && random == 0)
-        {
-            if ((this.size * 0.5) >= this.minSize)
+            if (collision.gameObject.tag == "Blue Bullet" && random == 0)
             {
-                SpawnSmallAsteroids();
-            }
-            gameManagerScript.AsteroidDestroyed(this);
+                if ((this.size * 0.5) >= this.minSize)
+                {
+                    SpawnSmallAsteroids();
+                }
+                gameManagerScript.AsteroidDestroyed(this);
 
-            Destroy(this.gameObject);
+                Destroy(this.gameObject);
+            }
         }
+        
     }
 
 
