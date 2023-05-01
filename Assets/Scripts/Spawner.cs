@@ -70,7 +70,7 @@ public class Spawner : MonoBehaviour
         }
 
         Debug.Log(time);
-        if (time == 0)
+        if (time == 0 && !GameManager.gameOver)
         {
             if (gameManager != null)
             {

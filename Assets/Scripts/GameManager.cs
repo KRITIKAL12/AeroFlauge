@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public Transform levelOneEnd;
     public int lives = 3;
     public int score = 0;
-    public bool gameOver = false;
+    public  static bool gameOver = false;
     public bool levelOneComplete = false;
 
     public Spawner spawner;
