@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -10,9 +12,14 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreIndicator;
     public TextMeshProUGUI livesIndicator;
     public Transform gameOverPanel;
+    public Transform levelOneEnd;
     public int lives = 3;
     public int score = 0;
     public bool gameOver = false;
+    public bool levelOneComplete = false;
+
+    public Spawner spawner;
+
 
     public float spawnDelay = 3.0f;
     public float layerChangeDelay = 60.0f;
@@ -20,6 +27,25 @@ public class GameManager : MonoBehaviour
 
 
     public ParticleSystem explosion;
+
+
+   
+
+    private void Awake()
+    {
+
+        spawner = FindObjectOfType<Spawner>();
+
+    }
+
+    public void Start()
+    {
+
+        if (spawner != null)
+        {
+            spawner.gameManager = this;
+        }
+    }
 
     private void Update()
     {
@@ -34,6 +60,13 @@ public class GameManager : MonoBehaviour
                 
                 SceneManager.LoadScene("Asteroids");
                 
+            }
+        }
+        else if (levelOneComplete)
+        {
+            if (Input.GetKey(KeyCode.Return))
+            {
+                SceneManager.LoadScene("Level2");
             }
         }
     }
@@ -92,13 +125,32 @@ public class GameManager : MonoBehaviour
         this.player.gameObject.layer = LayerMask.NameToLayer("Player");
     }
 
-    private void GameOver()   
+    public void GameOver()   
     {
         //Game Over...
         gameOverPanel.gameObject.SetActive(true);
         gameOver = true;
 
 
+    }
+
+    public void Level1Complete()
+    {
+        levelOneComplete = true;
+        if (levelOneEnd != null)
+        {
+            levelOneEnd.gameObject.SetActive(true);
+        }
+
+        if (player != null)
+        {
+            player.gameObject.SetActive(false);
+        }
+
+        if (spawner != null)
+        {
+            spawner.gameObject.SetActive(false);
+        }
     }
 
 }

@@ -151,8 +151,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 30dc8cb746a79014fb7b845977bb764d, type: 3}
   gameManager: {fileID: 0}
   size: 1
-  speed: 300
-  smallAsteroidSpeed: 700
+  speed: 100
+  smallAsteroidSpeed: 300
   minSize: 0.5
   maxSize: 1.5
   random: 0
