@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnRate: 1
   spawnAmount: 1
-  spawnDistance: 20
+  spawnDistance: 15
   trajectoryVariance: 20
   spawnerLifetime: 60
   levelCompletePanel: {fileID: 1220625181}
@@ -590,7 +590,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4
+  orthographic size: 11
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -615,7 +615,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5745, y: 1.5745, z: 1.5745}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 845041981}
@@ -692,8 +692,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0, b: 1, a: 0}
-  m_Intensity: 0.13
-  m_Range: 5
+  m_Intensity: 0.15
+  m_Range: 8
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -949,7 +949,7 @@ Transform:
   m_GameObject: {fileID: 679635609}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 18.581615, y: 18.581615, z: 18.581615}
+  m_LocalScale: {x: 43, y: 40.906433, z: 40.906433}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
