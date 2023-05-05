@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level 3 Aesteroids 3.unity
     guid: 6604e2679d58ee745bfd80b9be29bfb4
   - enabled: 1
+    path: Assets/Scenes/Level 4 Aesteroids 4.unity
+    guid: 9eec5ab398bb51c4da7c9f20bd674de3
+  - enabled: 1
     path: Assets/Scenes/End Menu.unity
     guid: a4589fb753cbb844296ff21333cb3bbf
   m_configObjects: {}
