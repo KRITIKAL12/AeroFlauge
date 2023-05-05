@@ -5,13 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Asteroids.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Asteroids.unity
-    guid: 746f66fbb8db9d640b49f160080b1e5e
+    path: Assets/Scenes/Menu.unity
+    guid: 82b389f777bf571459f6721662154926
   - enabled: 1
-    path: Assets/Scenes/Level 2 Aestroids.unity
-    guid: 606d9c8f69ba7c84bafad35e1333e455
+    path: Assets/Scenes/Directional Aesteroids 1.unity
+    guid: 151058e98e002684e9bb0fe4137c435b
+  - enabled: 1
+    path: Assets/Scenes/Level 2 Aesteroids 2.unity
+    guid: c7ee8540aa626aa4bb1c14d22da4aedd
+  - enabled: 1
+    path: Assets/Scenes/Level 3 Aesteroids 3.unity
+    guid: 6604e2679d58ee745bfd80b9be29bfb4
+  - enabled: 1
+    path: Assets/Scenes/End Menu.unity
+    guid: a4589fb753cbb844296ff21333cb3bbf
   m_configObjects: {}
