@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
             if (Input.GetKey(KeyCode.Return))
             {
                 
-                SceneManager.LoadScene("Asteroids");
+                SceneManager.LoadScene("Menu");
                 
             }
         }
