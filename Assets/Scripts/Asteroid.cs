@@ -48,7 +48,7 @@ public class Asteroid : MonoBehaviour
 
     public void SetTrajectory(Vector2 direction)
     {
-       if(this.size >= 0.5f && this.size< this.maxSize)
+       if(this.size >= 0.3f && this.size< this.maxSize)
         {
             Debug.Log("Big Speed");
             _rigidbody.AddForce(direction * this.speed);

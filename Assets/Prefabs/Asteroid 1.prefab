@@ -153,6 +153,6 @@ MonoBehaviour:
   size: 1
   speed: 15
   smallAsteroidSpeed: 10
-  minSize: 0.25
-  maxSize: 0.8
+  minSize: 0.2
+  maxSize: 0.5
   random: 0

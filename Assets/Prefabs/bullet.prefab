@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3398074285325805733}
   - component: {fileID: 5782722410718465260}
   - component: {fileID: 1855681831780227478}
-  - component: {fileID: 4367152428697605489}
+  - component: {fileID: 5921959835947727886}
   m_Layer: 0
   m_Name: bullet
   m_TagString: Red Bullet
@@ -134,7 +134,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
---- !u!82 &4367152428697605489
+--- !u!82 &5921959835947727886
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,7 +146,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e307c133ea00edc48b808784b14d92a6, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
