@@ -67,6 +67,7 @@ public class Asteroid : MonoBehaviour
     {
         if (collision.gameObject.tag != "Player")
         {
+            FindObjectOfType<AudioManager>().Play("BulletHit");
             Destroy(collision.gameObject);
             if (collision.gameObject.tag == "Red Bullet" && random == 1)
             {
@@ -78,6 +79,7 @@ public class Asteroid : MonoBehaviour
                 gameManagerScript.AsteroidDestroyed(this);
 
                 Destroy(this.gameObject);
+                FindObjectOfType<AudioManager>().Play("AsteroidBlast");
             }
             if (collision.gameObject.tag == "Blue Bullet" && random == 0)
             {
@@ -88,6 +90,7 @@ public class Asteroid : MonoBehaviour
                 gameManagerScript.AsteroidDestroyed(this);
 
                 Destroy(this.gameObject);
+                FindObjectOfType<AudioManager>().Play("AsteroidBlast");
             }
         }
         

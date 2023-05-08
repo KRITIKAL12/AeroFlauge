@@ -95,6 +95,7 @@ public class GameManager : MonoBehaviour
    
     public void PlayerDied()
     {
+
         this.explosion.transform.position = this.player.transform.position;
         this.explosion.Play();
         StartCoroutine(cameraShake.Shake(.15f, .4f));

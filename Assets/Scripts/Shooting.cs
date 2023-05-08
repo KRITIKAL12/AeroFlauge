@@ -1,4 +1,4 @@
-  using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -49,15 +49,16 @@ public class Shooting : MonoBehaviour
 
     public GameObject hitEffect;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
 
         if(collision.gameObject.tag == "Asteroid")
         {
 
             this.gameObject.SetActive(false);
+
             gameManagerScript.PlayerDied();
-           
+            FindObjectOfType<AudioManager>().Play("PlayerDeath");
         }
         
     }
