@@ -67,7 +67,7 @@ public class Asteroid : MonoBehaviour
     {
         if (collision.gameObject.tag != "Player")
         {
-            FindObjectOfType<AudioManager>().Play("BulletHit");
+            
             Destroy(collision.gameObject);
             if (collision.gameObject.tag == "Red Bullet" && random == 1)
             {
