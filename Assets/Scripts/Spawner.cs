@@ -63,6 +63,8 @@ public class Spawner : MonoBehaviour
                  _rigidbody.AddForce((rotation * -spawnDirection) * this.smallAsteroidSpeed);
              }*/
 
+
+
             Vector3 targetPosition = new Vector3(target.transform.position.x, target.transform.position.y, 0);
             this.transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
 

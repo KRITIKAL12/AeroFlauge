@@ -156,3 +156,5 @@ MonoBehaviour:
   minSize: 0.2
   maxSize: 0.5
   random: 0
+  bigAsteroidRotationSpeed: 150
+  smallAsteroidRotationSpeed: 50

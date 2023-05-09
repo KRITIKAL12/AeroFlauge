@@ -21,7 +21,10 @@ public class Asteroid : MonoBehaviour
     private float maxLifeTime = 20.0f;
     public int random;
 
+    public float bigAsteroidRotationSpeed;    // Rotation speed for big asteroids
+    public float smallAsteroidRotationSpeed;
 
+    private float rotationSpeed;
 
     private void Awake()
     {
@@ -39,12 +42,27 @@ public class Asteroid : MonoBehaviour
     {
         random = Random.Range(0, sprites.Length);
 
-        
         _spriteRenderer.sprite = sprites[random];
 
         this.transform.eulerAngles = new Vector3(0.0f, 0.0f, Random.value * 365.0f);
         this.transform.localScale = Vector3.one * this.size;
+
+        if (this.size >= 0.3f && this.size < this.maxSize)
+        {
+            rotationSpeed = smallAsteroidRotationSpeed;
+        }
+        else
+        {
+            rotationSpeed = bigAsteroidRotationSpeed;
+        }
     }
+
+    void FixedUpdate()
+    {
+        // Rotate the asteroid continuously
+        transform.Rotate(Vector3.forward, rotationSpeed * Time.fixedDeltaTime);
+    }
+
 
     public void SetTrajectory(Vector2 direction)
     {
