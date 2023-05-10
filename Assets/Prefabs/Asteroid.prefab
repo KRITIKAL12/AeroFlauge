@@ -125,7 +125,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.13, y: 2.91}
+    oldSize: {x: 2.9, y: 2.91}
     newSize: {x: 3.13, y: 2.91}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -151,8 +151,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 30dc8cb746a79014fb7b845977bb764d, type: 3}
   gameManager: {fileID: 0}
   size: 1
-  speed: 300
-  smallAsteroidSpeed: 700
-  minSize: 0.5
-  maxSize: 1.5
+  speed: 80
+  smallAsteroidSpeed: 180
+  minSize: 0.2
+  maxSize: 0.5
   random: 0
+  bigAsteroidRotationSpeed: 150
+  smallAsteroidRotationSpeed: 50

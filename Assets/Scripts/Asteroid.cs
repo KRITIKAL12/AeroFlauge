@@ -21,7 +21,10 @@ public class Asteroid : MonoBehaviour
     private float maxLifeTime = 20.0f;
     public int random;
 
+    public float bigAsteroidRotationSpeed;    // Rotation speed for big asteroids
+    public float smallAsteroidRotationSpeed;
 
+    private float rotationSpeed;
 
     private void Awake()
     {
@@ -39,16 +42,31 @@ public class Asteroid : MonoBehaviour
     {
         random = Random.Range(0, sprites.Length);
 
-        
         _spriteRenderer.sprite = sprites[random];
 
         this.transform.eulerAngles = new Vector3(0.0f, 0.0f, Random.value * 365.0f);
         this.transform.localScale = Vector3.one * this.size;
+
+        if (this.size >= 0.3f && this.size < this.maxSize)
+        {
+            rotationSpeed = smallAsteroidRotationSpeed;
+        }
+        else
+        {
+            rotationSpeed = bigAsteroidRotationSpeed;
+        }
     }
+
+    void FixedUpdate()
+    {
+        // Rotate the asteroid continuously
+        transform.Rotate(Vector3.forward, rotationSpeed * Time.fixedDeltaTime);
+    }
+
 
     public void SetTrajectory(Vector2 direction)
     {
-       if(this.size >= 1.2f && this.size< this.maxSize)
+       if(this.size >= 0.3f && this.size< this.maxSize)
         {
             Debug.Log("Big Speed");
             _rigidbody.AddForce(direction * this.speed);
@@ -67,6 +85,7 @@ public class Asteroid : MonoBehaviour
     {
         if (collision.gameObject.tag != "Player")
         {
+            
             Destroy(collision.gameObject);
             if (collision.gameObject.tag == "Red Bullet" && random == 1)
             {
@@ -78,6 +97,7 @@ public class Asteroid : MonoBehaviour
                 gameManagerScript.AsteroidDestroyed(this);
 
                 Destroy(this.gameObject);
+                FindObjectOfType<AudioManager>().Play("AsteroidBlast");
             }
             if (collision.gameObject.tag == "Blue Bullet" && random == 0)
             {
@@ -88,6 +108,7 @@ public class Asteroid : MonoBehaviour
                 gameManagerScript.AsteroidDestroyed(this);
 
                 Destroy(this.gameObject);
+                FindObjectOfType<AudioManager>().Play("AsteroidBlast");
             }
         }
         

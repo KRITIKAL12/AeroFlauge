@@ -15,6 +15,7 @@ public class CameraMovement : MonoBehaviour
 
     [Header("Camera Settings")]
     public float CameraSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
