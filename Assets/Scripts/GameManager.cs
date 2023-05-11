@@ -119,8 +119,58 @@ public class GameManager : MonoBehaviour
         this.player.gameObject.layer = LayerMask.NameToLayer("Ignore Collisions");
         
         Invoke(nameof(ChangePlayerLayer), layerChangeDelay);
+        
+        StartCoroutine(BlinkPlayer());
     }
-     
+
+    private IEnumerator BlinkPlayer()
+    {
+        float blinkDuration = 3.0f; // Total duration of blinking in seconds
+        float blinkInterval = 0.2f; // Duration of each blink interval
+
+        // Set the player's layer to "Ignore Collisions"
+        this.player.gameObject.layer = LayerMask.NameToLayer("Ignore Collisions");
+
+        SpriteRenderer playerRenderer = this.player.GetComponent<SpriteRenderer>();
+        Color originalColor = playerRenderer.color; // Store the original color
+
+        float elapsedTime = 0f;
+        bool playerActive = true;
+        bool isRed = true;
+
+        while (elapsedTime < blinkDuration)
+        {
+            yield return new WaitForSeconds(blinkInterval);
+
+            elapsedTime += blinkInterval;
+
+            // Toggle the player's visibility
+            playerActive = !playerActive;
+            this.player.gameObject.SetActive(playerActive);
+
+            // Toggle the player's color between red and cyan
+            if (playerActive)
+            {
+                if (isRed)
+                {
+                    playerRenderer.color = Color.red;
+                }
+                else
+                {
+                    playerRenderer.color = Color.cyan;
+                }
+
+                isRed = !isRed;
+            }
+        }
+
+        // Reset player visibility and layer
+        this.player.gameObject.SetActive(true);
+        this.player.gameObject.layer = LayerMask.NameToLayer("Player");
+        playerRenderer.color = originalColor; // Reset the color to the original color
+    }
+
+
     private void ChangePlayerLayer()
     {
         this.player.gameObject.layer = LayerMask.NameToLayer("Player");

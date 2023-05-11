@@ -171,7 +171,7 @@ MonoBehaviour:
   spawnAmount: 1
   spawnDistance: 10
   trajectoryVariance: 25
-  spawnerLifetime: 60
+  spawnerLifetime: 120
   levelCompletePanel: {fileID: 1220625181}
   smoothTime: 0.25
   target: {fileID: 824201988}
@@ -1489,6 +1489,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c94175d99a95d6745aaedbcd32c2ea90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blinkDuration: 3
+  blinkInterval: 0.2
 --- !u!114 &824201999
 MonoBehaviour:
   m_ObjectHideFlags: 0

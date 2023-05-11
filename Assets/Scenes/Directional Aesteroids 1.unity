@@ -2797,6 +2797,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c94175d99a95d6745aaedbcd32c2ea90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blinkDuration: 3
+  blinkInterval: 0.2
 --- !u!114 &824201999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8522,7 +8524,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4532528079185253276, guid: 2c3e32e2f0558af4ca5a71bf42e57cbb, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4532528079185253276, guid: 2c3e32e2f0558af4ca5a71bf42e57cbb, type: 3}
       propertyPath: m_AnchorMax.x
