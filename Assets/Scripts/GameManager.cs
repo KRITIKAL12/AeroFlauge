@@ -229,6 +229,8 @@ public class GameManager : MonoBehaviour
         {
             spawner.gameObject.SetActive(false);
         }
+
+        
     }
 
 }
