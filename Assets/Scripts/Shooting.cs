@@ -11,6 +11,7 @@ public class Shooting : MonoBehaviour
     public int colorChange;
     public GameObject gameManager;
     private GameManager gameManagerScript;
+    public GameObject hitEffect;
 
     private float maxLifeTime = 3.0f;
 
@@ -47,18 +48,22 @@ public class Shooting : MonoBehaviour
         Destroy(bullet, this.maxLifeTime);
     }
 
-    public GameObject hitEffect;
+   
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        
 
-        if(collision.gameObject.tag == "Asteroid")
+        if (collision.gameObject.tag == "Asteroid")
         {
+            GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+            Destroy(effect, 1f);
 
             this.gameObject.SetActive(false);
 
             gameManagerScript.PlayerDied();
             FindObjectOfType<AudioManager>().Play("PlayerDeath");
+
         }
         
     }
