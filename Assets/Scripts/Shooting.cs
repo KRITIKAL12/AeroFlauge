@@ -18,6 +18,7 @@ public class Shooting : MonoBehaviour
 
     private void Awake()
     {
+        Cursor.visible = false;
         gameManagerScript = gameManager.GetComponent<GameManager>();
     }
 
@@ -36,7 +37,12 @@ public class Shooting : MonoBehaviour
             else if (colorChange == 1)
                 colorChange = 0;
         }
-        
+
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = 0f;
+        Vector2 direction = (mousePosition - transform.position).normalized;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
 

@@ -61,6 +61,8 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        Cursor.visible = true;
+
         if (!isPaused)
         {
             livesIndicator.text = lives.ToString();
