@@ -12,8 +12,10 @@ public class Shooting : MonoBehaviour
     public GameObject gameManager;
     private GameManager gameManagerScript;
     public GameObject hitEffect;
-
+    public GameObject muzzleFlashPrefab;
     private float maxLifeTime = 3.0f;
+
+    public GameObject mf; 
 
 
     private void Awake()
@@ -48,9 +50,15 @@ public class Shooting : MonoBehaviour
 
  void Shoot()
     {
+
+        //GameObject muzzleFlash = Instantiate(muzzleFlashPrefab, firePoint.position, firePoint.rotation);
+        //Destroy(muzzleFlash, maxLifeTime);
+
+        Coroutine mFlash = StartCoroutine(muzzle());
         GameObject bullet = Instantiate(bulletPrefab[colorChange], firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+        //StopCoroutine(mFlash);
         Destroy(bullet, this.maxLifeTime);
     }
 
@@ -72,6 +80,14 @@ public class Shooting : MonoBehaviour
 
         }
         
+    }
+
+    public IEnumerator muzzle()
+    {
+        mf.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        mf.gameObject.SetActive(false);
+        yield return null;
     }
 }
 
