@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour
 
     public ParticleSystem explosion;
 
+    private bool isPaused = false;
 
-   
 
     private void Awake()
     {
@@ -49,26 +49,53 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        
-        livesIndicator.text = lives.ToString();
-        scoreIndicator.text = score.ToString();
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPaused)
+            {
+                ResumeGame();
+            }
+            else
+            {
+                PauseGame();
+            }
+        }
 
-        if (gameOver)
+        Cursor.visible = true;
+
+        if (!isPaused)
         {
-            if (Input.GetKey(KeyCode.Return))
+            livesIndicator.text = lives.ToString();
+            scoreIndicator.text = score.ToString();
+
+            if (gameOver)
             {
-                
-                SceneManager.LoadScene("Menu");
-                
+                if (Input.GetKey(KeyCode.Return))
+                {
+                    SceneManager.LoadScene("Menu");
+                }
+            }
+            else if (levelOneComplete)
+            {
+                if (Input.GetKey(KeyCode.Return))
+                {
+                    SceneManager.LoadScene("Level2");
+                }
             }
         }
-        else if (levelOneComplete)
-        {
-            if (Input.GetKey(KeyCode.Return))
-            {
-                SceneManager.LoadScene("Level2");
-            }
-        }
+
+    }
+
+    private void PauseGame()
+    {
+        Time.timeScale = 0f; // Pause the game by setting the time scale to 0
+        isPaused = true;
+    }
+
+    private void ResumeGame()
+    {
+        Time.timeScale = 1f; // Resume the game by setting the time scale to 1
+        isPaused = false;
     }
 
     public void AsteroidDestroyed(Asteroid asteroid)
@@ -98,7 +125,7 @@ public class GameManager : MonoBehaviour
 
         this.explosion.transform.position = this.player.transform.position;
         this.explosion.Play();
-        StartCoroutine(cameraShake.Shake(.15f, .4f));
+        StartCoroutine(cameraShake.Shake(.20f, .3f));
 
         lives -= 1;
         if(this.lives <= 0)
@@ -202,6 +229,8 @@ public class GameManager : MonoBehaviour
         {
             spawner.gameObject.SetActive(false);
         }
+
+        
     }
 
 }

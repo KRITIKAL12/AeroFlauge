@@ -20,7 +20,7 @@ public class Asteroid : MonoBehaviour
     public float maxSize = 1.5f;
     private float maxLifeTime = 20.0f;
     public int random;
-
+    
     public float bigAsteroidRotationSpeed;    // Rotation speed for big asteroids
     public float smallAsteroidRotationSpeed;
 
@@ -83,6 +83,8 @@ public class Asteroid : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        
+
         if (collision.gameObject.tag != "Player")
         {
             
