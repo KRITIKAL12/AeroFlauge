@@ -9,7 +9,15 @@ public class CustomCursor : MonoBehaviour
 
     private void Start()
     {
-        Cursor.SetCursor(cursorTexture, cursorHotspot, CursorMode.Auto);
+#if UNITY_WEBGL
+        float xspot = cursorTexture.width / 2;
+        float yspot = cursorTexture.height / 2;
+        Vector2 hotSpot = new Vector2(xspot, yspot);
+        Cursor.SetCursor(cursorTexture, hotSpot, CursorMode.ForceSoftware);
+#else
+        Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
+#endif
+
     }
 
     private void Update()
@@ -17,5 +25,8 @@ public class CustomCursor : MonoBehaviour
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0f;
         transform.position = mousePosition;
+
     }
+
 }
+
