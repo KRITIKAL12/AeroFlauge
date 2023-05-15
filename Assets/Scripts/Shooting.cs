@@ -56,6 +56,7 @@ public class Shooting : MonoBehaviour
 
         Coroutine mFlash = StartCoroutine(muzzle());
         GameObject bullet = Instantiate(bulletPrefab[colorChange], firePoint.position, firePoint.rotation);
+        FindObjectOfType<AudioManager>().Play("BulletHit");
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
         //StopCoroutine(mFlash);
